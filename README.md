@@ -2,6 +2,8 @@
 
 Demo repository to help with the Swift NIO Workshop.
 
+See the Keynote slides in the `presentation` directory that goes along with this repository!
+
 # Part 1: Setup
 
 Let's make sure you can build & run the system correctly.
@@ -27,11 +29,13 @@ Open up `./Sources/EchoServer/main.swift` (or create a new repository from scrat
 
 To run it, you can execute `swift run echo-server` in a terminal.
 
-If you want a few hints, take a look at the branch named `echo-server`:
+If you want a few hints, take a look at the branch named `hints`:
 
 ```sh
 git checkout echo-server
 ```
+
+And a solution is on branch `complete-echo-server`.
 
 # Part 3: Create an HTTPClient
 
@@ -60,8 +64,6 @@ This will give you a simple HTTP server to test out your client and see what req
 
 You're going to import `NIOHTTP1` and utilize the primitives available for communicating with the HTTP protocol. The skeleton file is located in `./Sources/HTTPClient/main.swift`, and can be run with `swift run http-client`.
 
-If you're looking for hints, check out the `http-client` branch:
+If you're looking for hints, check out the `hints` branch, and a completed example at `complete-http-client`. If you want to print out results, there's a simple `accumulator` example at `complete-http-client-with-response`.
 
-```sh
-git checkout http-client
-```
+For an example of a production-ready solution, make sure you take a look at the [pitch for a common HTTP client on the forums](https://forums.swift.org/t/generic-http-client-library-pitch/23341) and the [repository itself](https://github.com/swift-server/swift-nio-http-client)!
