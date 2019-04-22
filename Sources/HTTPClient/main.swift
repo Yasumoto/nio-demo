@@ -10,13 +10,24 @@ import NIOHTTP1
 
 let group = MultiThreadedEventLoopGroup(numberOfThreads: System.coreCount)
 
+let store = ResponseStore()
+let accumulation = HTTPClientResponseHandler(store: store)
+
 let channel = try ClientBootstrap(group: group)
     .channelInitializer { channel in
-        channel.pipeline.addHTTPClientHandlers()
-    }.connect(host: "localhost", port: 8000).wait()
+        channel.pipeline.addHTTPClientHandlers().flatMap { _ in
+            channel.pipeline.addHandler(accumulation)
+        }
+    }
+    .connect(host: "localhost", port: 8000).wait()
 
 let head = HTTPRequestHead(version: HTTPVersion(major: 1, minor: 1), method: .GET, uri: "/test")
 
 let _ = try channel.write(NIOAny(HTTPClientRequestPart.head(head))).and(
     channel.writeAndFlush(NIOAny(HTTPClientRequestPart.end(nil)))
 ).wait()
+
+accumulation.syncWaitForCompletion()
+for response in store.responses {
+    print(response)
+}
