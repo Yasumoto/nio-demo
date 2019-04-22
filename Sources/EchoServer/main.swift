@@ -33,7 +33,7 @@ defer {
 }
 
 let bootstrap = ServerBootstrap(group: group)
-    // Set the handlers that are appled to the channel
+    // Set the handlers that are applied to the channel
     .childChannelInitializer { channel in
         channel.pipeline.addHandler(EchoHandler())
     }
