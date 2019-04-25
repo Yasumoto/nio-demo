@@ -21,6 +21,12 @@ And then you should open a new terminal and attempt to communicate. You should r
 echo "Hello World" | nc localhost 9999
 ```
 
+### Note: If you'd like to do your editing in Xcode
+
+```sh
+swift package generate-xcodeproj
+```
+
 # Part 2: Build your own EchoServer
 
 Using what you learned about `EventLoop`s, `Channel`s, and `ChannelHandler`s, you're going to reproduce that echo behavior on your own.
