@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:4.2
 
 import PackageDescription
 
@@ -13,15 +13,15 @@ let package = Package(
             targets: ["HTTPClient"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio", from: "2.0.0"),
-        .package(url: "https://github.com/apple/swift-nio-ssl", from: "2.0.0")
+        .package(url: "https://github.com/apple/swift-nio", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-nio-ssl", from: "1.0.0")
     ],
     targets: [
         .target(
             name: "EchoServer",
-            dependencies: ["NIO", "NIOHTTP1", "NIOSSL"]),
+            dependencies: ["NIO", "NIOHTTP1", "NIOOpenSSL"]),
         .target(
             name: "HTTPClient",
-            dependencies: ["NIO", "NIOHTTP1", "NIOSSL"])
+            dependencies: ["NIO", "NIOHTTP1", "NIOOpenSSL"])
     ]
 )
