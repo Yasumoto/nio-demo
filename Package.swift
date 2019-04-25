@@ -6,10 +6,10 @@ let package = Package(
     name: "nio-demo",
     products: [
         .executable(
-            name: "echo-server",
+            name: "EchoServer",
             targets: ["EchoServer"]),
         .executable(
-            name: "http-client",
+            name: "HTTPClient",
             targets: ["HTTPClient"])
     ],
     dependencies: [
